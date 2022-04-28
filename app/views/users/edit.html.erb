@@ -19,24 +19,17 @@
   <%= submit_tag("Submit") %>
 <% end %> -->
 
+<%= User.find(params[:id]).username%><br>
+<%= User.find(params[:id]).email%><br>
+<%= User.find(params[:id]).password%><br>
+
 
 <%= form_with model: @user do |form| %>
-  <% @user.errors.full_messages_for(:username).each do |message| %>
-  <div><%= message %></div>
-  <% end %>
   <%= form.label :text_field, "User name:" %> 
-  <%= form.text_field :username, placeholder: "cool user name" %><br/><br/><br/>
-  
-  <% @user.errors.full_messages_for(:email).each do |message| %>
-  <div><%= message %></div>
-  <% end %>
+  <%= form.text_field :username, placeholder: "cool user name" %><br/><br/>
   <%= form.label :text_field, "Email:" %> 
-  <%= form.email_field :email, placeholder: "example@mail.com" %><br/><br/><br/>
-
-  <% @user.errors.full_messages_for(:password).each do |message| %>
-  <div><%= message %></div>
-  <% end %>
+  <%= form.email_field :email, placeholder: "example@mail.com" %><br/><br/>
   <%= form.label :password, "Password:" %> 
-  <%= form.password_field :password %><br/><br/><br/>
+  <%= form.password_field :password %><br/><br/>
   <%= form.submit "Submit" %>
 <% end %>
